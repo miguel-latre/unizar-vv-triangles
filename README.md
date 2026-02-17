@@ -18,14 +18,14 @@ _The Art of Software Testing_, 3rd Edition. John Wiley and Sons Ltd.
 
 ### Determinación del tipo de un triángulo en función de las longitudes de sus lados
 
-Los objetos de la clase `TipoTriangulo` enumeran los distintos
-tipos de triángulos: `EQUILATERO`, `ISOSCELES` y `ESCALENO`.
+Los objetos de la clase `TriangleType` enumeran los distintos
+tipos de triángulos: `EQUILATERAL`, `ISOSCELES` y `SCALENE`.
 
-La clase `Triangulo`, en su estado actual, consta simplemente de
-un constructor que permite crear un nuevo `Triangulo` especificando
+La clase `Triangle`, en su estado actual, consta simplemente de
+un constructor que permite crear un nuevo `Triangle` especificando
 las longitudes enteras de sus tres lados y un método que devuelve el
 tipo del triángulo a través de un valor de la enumeración 
-`TipoTriangulo`. 
+`TriangleType`. 
 
 
 ### Tareas
@@ -34,7 +34,7 @@ tipo del triángulo a través de un valor de la enumeración
  2. Abridlo desde IntelliJ o Android Studio (a través del menú `Open`, **no** desde el de `Import project`).
  2. El proyecto está configurado para utilizar el SDK de Java 17. Si obtuvieras algún error, puedes cambiar el SDK asociado al proyecto en
     `File` → `Project Structure...` → `Project Settings` → `Project` → `Project SDK`. 
- 3. Observad la estructura del proyecto y, en particular, las clases `Triangulo`,`TipoTriangulo` y sus métodos.
+ 3. Observad la estructura del proyecto y, en particular, las clases `Triangle`,`TriangleType` y sus métodos.
  4. Para que los tests que escribamos con JUnit no se mezclen con el código fuente del proyecto,
     cread un nuevo directorio de código fuente denominado `test` y ubicado en el directorio `src`.
     Puede hacerse directamente desde IntelliJ o Android Studio a través del menú contextual (botón derecho) del
@@ -46,8 +46,8 @@ tipo del triángulo a través de un valor de la enumeración
  
     ![Estructura del proyecto](docs/project-structure.png)
  
- 8. Cread un primer test para el método `tipo` de la clase `Triangulo`. Para ello, podéis abrir la clase
-    `Triangulo` y ejecutar `Navigate` → `Test` y elegir `Create New Test`. En la ventana que aparece a continuación
+ 8. Cread un primer test para el método `type` de la clase `Triangle`. Para ello, podéis abrir la clase
+    `Triangle` y ejecutar `Navigate` → `Test` y elegir `Create New Test`. En la ventana que aparece a continuación
 	seleccionad `JUnit5` como `Testing library` y pulsad en el botón `Fix` que aparece debajo para que añada la
 	biblioteca de JUnit 5 al _classpath_ del proyecto.
 	
@@ -57,30 +57,31 @@ tipo del triángulo a través de un valor de la enumeración
 	
 	Marcad las cuatro casillas de debajo y podéis hacer clic en `OK` sin esperar a que la búsqueda termine en Maven.
 	
- 9. Se habrá creado una clase denominada `TrianguloTest`. Comprobad como está en el mismo paquete que la clase 
-    `Triangulo` (`es.unizar.eina.vv6f.pruebas.triangulos`), pero en directorios completamente separados del sistema
+ 9. Se habrá creado una clase denominada `TriangleTest`. Comprobad como está en el mismo paquete que la clase 
+    `Triangle` (`es.unizar.eina.vv.testing.triangles`), pero en directorios completamente separados del sistema
 	de ficheros.
 	
-10. Escribe el test correspondiente al primer caso de prueba de la tabla de la trasparencia 41: 
+10. Escribe el test correspondiente al primer caso de prueba de la tabla de la trasparencia 42:
 
-	```java
+    ```java
     @Test
-    void comprobarTrianguloLados_3_3_3_esEquilatero() {
-		Triangulo triangulo = new Triangulo(3, 3, 3);
-		assertEquals(TipoTriangulo.EQUILATERO, triangulo.tipo());
-	}
-	```
+    void testTriangleSides_3_3_3_isEquilateral() {
+        Triangle triangle = new Triangle(3, 3, 3);
+        TriangleType type = triangle.type();
+        assertEquals(TriangleType.EQUILATERAL, type);
+    }
+    ```
 11. Ejecútalo. Puedes optar por ejecutar solo este test pulsando en la flecha verde situada a la izquierda de la
     cabecera del método, o puedes ejecutar todos los tests de la clase pulsando en la doble flecha que aparece 
 	junto a la cabecera de la clase.
 	
-12. El test no pasará, puesto que de la clase `Triangulo` solo os hemos proporcionado el esqueleto.
+12. El test no pasará, puesto que de la clase `Triangle` solo os hemos proporcionado el esqueleto.
 
-13. Escribe el código mínimo imprescindible en la clase `Triangulo` para que el test pase, siguiendo las explicaciones
+13. Escribe el código mínimo imprescindible en la clase `Triangle` para que el test pase, siguiendo las explicaciones
     dadas en clase sobre TDD.
 
 14. Ve repitiendo este proceso de forma incremental con el resto de los casos de prueba de la tabla de la
-    transparencia 43:
+    transparencia 42:
 	- Escribe un nuevo test.
 	- Ejecútalo para comprobar que no pasa.
     - Escribe el código mínimo que haga que pase.
